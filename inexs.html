@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Online Natija — Matematika kurslari</title>
+  <meta name="description"
+    content="Online Natija: Milliy Sertifikat (A+) va SAT Math bo‘yicha kuchli tayyorgarlik. Diagnostik test, tizimli reja, xatolar tahlili va muntazam sinovlar." />
+  <link rel="canonical" href="https://online-natija.example/" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Online Natija — Matematika kurslari" />
+  <meta property="og:description" content="A+ Sertifikat va SAT Math uchun zamonaviy darslar. Hozir yoziling!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.png" />
+  <meta property="og:url" content="https://online-natija.example/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="theme-color" content="#0C1022" />
+
+  <style>
+    :root {
+      /* Elegant dark + cyan/blue palette */
+      --bg: #0C1022;
+      --surface: #111739;
+      --surface-2: #0F1430;
+      --border: rgba(99, 102, 241, 0.25);
+      --muted: #91A4C9;
+      --text: #EAF2FF;
+      --primary: #22D3EE;
+      /* cyan */
+      --primary-2: #60A5FA;
+      /* blue */
+      --accent: #16A34A;
+      /* green for highlights */
+      --danger: #EF4444;
+      --shadow: 0 10px 28px rgba(34, 211, 238, .15);
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(180deg, var(--bg) 0%, #0B132C 100%);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      scroll-behavior: smooth
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    .container {
+      max-width: 1120px;
+      margin-inline: auto;
+      padding: 0 16px
+    }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden
+    }
+
+    .skip-link:focus {
+      left: 16px;
+      top: 16px;
+      width: auto;
+      height: auto;
+      padding: 8px 12px;
+      background: #fff;
+      color: #000;
+      border-radius: 8px
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(12, 16, 34, .7);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border)
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0
+    }
+
+    .logo {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-weight: 800
+    }
+
+    .logo-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      display: grid;
+      place-items: center;
+      color: #0C1022;
+      font-weight: 900
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px
+    }
+
+    .nav a {
+      opacity: .95
+    }
+
+    .menu-btn {
+      display: none
+    }
+
+    .btn {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      font-weight: 700;
+      border-radius: 12px;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(34, 211, 238, .12), rgba(96, 165, 250, .12));
+      color: var(--text);
+      transition: .2s
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow)
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #0B1020;
+      border-color: transparent
+    }
+
+    /* Hero */
+    .hero {
+      padding: 64px 0 28px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .glow {
+      position: absolute;
+      inset: -30%;
+      background: radial-gradient(650px 320px at 62% -10%, rgba(34, 211, 238, .18), transparent 60%);
+      pointer-events: none
+    }
+
+    .tag {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      border: 1px solid var(--border);
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+      background: rgba(96, 165, 250, .05)
+    }
+
+    .title {
+      font-size: 44px;
+      line-height: 1.08;
+      margin: 14px 0
+    }
+
+    .title .grad {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent
+    }
+
+    .subtitle {
+      color: var(--muted);
+      max-width: 740px
+    }
+
+    .cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px
+    }
+
+    /* Sections */
+    .section {
+      padding: 50px 0
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px
+    }
+
+    .cards {
+      grid-template-columns: repeat(3, minmax(0, 1fr))
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, .03), rgba(255, 255, 255, .01));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      transition: .25s
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 22px rgba(96, 165, 250, .18);
+      border-color: rgba(96, 165, 250, .55)
+    }
+
+    .badge {
+      font-size: 12px;
+      border: 1px solid rgba(96, 165, 250, .55);
+      padding: 2px 8px;
+      border-radius: 999px;
+      color: var(--primary-2)
+    }
+
+    .muted {
+      color: var(--muted)
+    }
+
+    /* KPI */
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px
+    }
+
+    .kpi {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      text-align: center
+    }
+
+    .kpi .n {
+      font-size: 26px;
+      font-weight: 900
+    }
+
+    /* Pricing */
+    .pricing {
+      grid-template-columns: repeat(3, minmax(0, 1fr))
+    }
+
+    .price {
+      font-size: 32px;
+      font-weight: 900;
+      margin: 10px 0;
+      color: var(--accent)
+    }
+
+    .list {
+      display: grid;
+      gap: 8px;
+      margin: 12px 0;
+      padding-left: 0;
+      list-style: none
+    }
+
+    .list li {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 8px;
+      align-items: flex-start
+    }
+
+    /* FAQ */
+    .faq {
+      grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+
+    .q {
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface-2)
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      color: var(--muted)
+    }
+
+    /* Responsive */
+    @media (max-width:960px) {
+
+      .cards,
+      .pricing,
+      .faq {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .kpis {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    @media (max-width:640px) {
+      .title {
+        font-size: 34px
+      }
+
+      .cards,
+      .pricing,
+      .faq {
+        grid-template-columns: 1fr
+      }
+
+      .nav-links {
+        display: none
+      }
+
+      .menu-btn {
+        display: inline-flex
+      }
+
+      .mobile {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 54px;
+        background: #0B132C;
+        border-bottom: 1px solid var(--border)
+      }
+
+      .mobile a {
+        display: block;
+        padding: 12px 16px;
+        border-top: 1px solid rgba(96, 165, 250, .15)
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      * {
+        transition: none !important
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Online Natija",
+    "url":"https://online-natija.example/",
+    "logo":"/og-image.png",
+    "sameAs":[
+      "https://t.me/online_natija",
+      "https://t.me/ilmislomnurdir",
+      "https://instagram.com/teacher_bahodir"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+998932993355",
+      "contactType": "customer service",
+      "areaServed": "UZ"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Asosiy mazmunga o‘tish</a>
+  <header role="banner">
+    <div class="container nav">
+      <div class="logo">
+        <div class="logo-badge" aria-hidden="true">ON</div>
+        <div aria-label="Online Natija">Online Natija</div>
+      </div>
+      <nav class="nav-links" aria-label="Bosh menyu">
+        <a href="#kurs">Kurslar</a>
+        <a href="#metod">Metodika</a>
+        <a href="#jadval">Jadval</a>
+        <a href="#narx">Narxlar</a>
+        <a href="#faq">FAQ</a>
+        <a href="#boglanish">Bog'lanish</a>
+      </nav>
+      <button class="btn menu-btn" type="button" aria-label="Menyuni ochish" aria-controls="mnav"
+        aria-expanded="false">☰</button>
+    </div>
+    <div id="mnav" class="mobile" role="navigation" aria-label="Mobil menyu" hidden>
+      <a href="#kurs">Kurslar</a>
+      <a href="#metod">Metodika</a>
+      <a href="#jadval">Jadval</a>
+      <a href="#narx">Narxlar</a>
+      <a href="#faq">FAQ</a>
+      <a href="#boglanish">Bog'lanish</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container">
+        <span class="tag">🎯 A+ Sertifikat | SAT Math | Mantiq & Ma'lumot tahlili</span>
+        <h1 class="title">Matematika bilan <span class="grad">haqiqiy natija</span> qilamiz</h1>
+        <p class="subtitle">Bahodir Sobirov bilan Online Natija — Milliy Sertifikat (A+) va SAT Math uchun kuchli,
+          tizimli va natijaga yo‘naltirilgan tayyorgarlik. Diagnostika, shaxsiy reja, xatolar tahlili va muntazam
+          sinovlar.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="https://t.me/online_natija" target="_blank"
+            rel="noopener noreferrer">Telegram kanal</a>
+          <a class="btn" href="#narx">Narxlarni ko'rish</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- KPI / Yo'nalishlar -->
+    <section id="kpi" class="section" aria-labelledby="kpi-title">
+      <div class="container kpis">
+        <h2 id="kpi-title" class="visually-hidden" style="position:absolute;left:-9999px">Yo‘nalishlar</h2>
+        <div class="kpi">
+          <div class="n">A+ maqsad</div>
+          <div class="muted">100% yo‘nalish & nazorat</div>
+        </div>
+        <div class="kpi">
+          <div class="n">SAT 0→750+</div>
+          <div class="muted">Algebra, funksiya, ma'lumot</div>
+        </div>
+        <div class="kpi">
+          <div class="n">Mantiq</div>
+          <div class="muted">Qiyin masalalar & olimpiada</div>
+        </div>
+        <div class="kpi">
+          <div class="n">Onlayn/Oflayn</div>
+          <div class="muted">Moslashuvchan jadval</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kurslar -->
+    <section id="kurs" class="section">
+      <div class="container">
+        <h2>Kurslar</h2>
+        <div class="grid cards">
+          <article class="card">
+            <span class="badge">A+ Sertifikat</span>
+            <h3>Milliy Sertifikat — A+ (100%)</h3>
+            <p class="muted">Nazariya + minglab testlar + xatolar tahlili. Haftasiga 3–4 dars, oraliq testlar va yakuniy
+              imtihon simulyatsiyasi.</p>
+            <a class="btn" href="#boglanish">Yozilish</a>
+          </article>
+          <article class="card">
+            <span class="badge">SAT</span>
+            <h3>SAT Math 0 → 750+</h3>
+            <p class="muted">Algebra, funksiyalar, geometriya, ehtimol va ma'lumot tahlili. Har 3 haftada to'liq
+              practice test.</p>
+            <a class="btn" href="#boglanish">Yozilish</a>
+          </article>
+          <article class="card">
+            <span class="badge">Mantiq & Olimpiada</span>
+            <h3>Qiyin masalalar klubi</h3>
+            <p class="muted">Mantiqiy fikrlash, isbotlar, kombinatorika va funksional tenglamalar. Haftalik challange va
+              tahlil.</p>
+            <a class="btn" href="#boglanish">Yozilish</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Metodika -->
+    <section id="metod" class="section">
+      <div class="container">
+        <h2>Metodika</h2>
+        <div class="grid cards">
+          <article class="card">
+            <h3>Diagnostika</h3>
+            <p class="muted">Boshlanishida daraja aniqlanadi va shaxsiy reja tuziladi. Zaif nuqtalar bo‘yicha qisqa
+              sprintlar.</p>
+          </article>
+          <article class="card">
+            <h3>Xatolar tahlili</h3>
+            <p class="muted">Har bir testdan keyin xatolar sababi tahlil qilinadi va o‘sha mavzu bo‘yicha tezkor
+              mustahkamlash bloklari beriladi.</p>
+          </article>
+          <article class="card">
+            <h3>Spaced Repetition</h3>
+            <p class="muted">Formulalar, teoremalar va usullar interval takrorlash orqali mustahkamlanadi. Haftalik
+              mini-quiz.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Jadval -->
+    <section id="jadval" class="section">
+      <div class="container">
+        <h2>Jadval (namuna)</h2>
+        <div class="grid cards">
+          <div class="card">
+            <h3>Dushanba, Chorshanba, Juma</h3>
+            <p class="muted">09:00–12:00 va 14:00–19:00 — Oflayn darslar</p>
+          </div>
+          <div class="card">
+            <h3>Seshanba, Payshanba</h3>
+            <p class="muted">19:30–21:00 — Onlayn guruh (Zoom)</p>
+          </div>
+          <div class="card">
+            <h3>Shanba</h3>
+            <p class="muted">10:00–12:00 — SAT Math practice test</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Narxlar -->
+    <section id="narx" class="section">
+      <div class="container">
+        <h2>Narxlar</h2>
+        <div class="grid pricing">
+          <article class="card">
+            <span class="badge">Guruh</span>
+            <h3>Standart</h3>
+            <div class="price">490 000 so‘m/oy</div>
+            <ul class="list" role="list">
+              <li>✅ <span>Haftasiga 3 dars</span></li>
+              <li>✅ <span>Uyga vazifa va tahlil</span></li>
+              <li>✅ <span>Oraliq test</span></li>
+            </ul>
+            <a class="btn" href="#boglanish">Yozilish</a>
+          </article>
+          <article class="card" style="border-color:rgba(34,211,238,.6)">
+            <span class="badge" style="color:var(--primary);border-color:rgba(34,211,238,.6)">Tavsiya etiladi</span>
+            <h3>Intensiv (A+)</h3>
+            <div class="price">790 000 so‘m/oy</div>
+            <ul class="list" role="list">
+              <li>✅ <span>Haftasiga 4 dars</span></li>
+              <li>✅ <span>Har 2 haftada to‘liq test</span></li>
+              <li>✅ <span>Telegram yopiq guruh</span></li>
+            </ul>
+            <a class="btn btn-primary" href="#boglanish">Yozilish</a>
+          </article>
+          <article class="card">
+            <span class="badge">1:1</span>
+            <h3>Mentorlik</h3>
+            <div class="price">1 490 000 so‘m/oy</div>
+            <ul class="list" role="list">
+              <li>✅ <span>Shaxsiy reja va nazorat</span></li>
+              <li>✅ <span>Haftasiga 2 mentorlik qo‘ng‘irog‘i</span></li>
+              <li>✅ <span>Cheksiz savol-javob</span></li>
+            </ul>
+            <a class="btn" href="#boglanish">Uchrashuv belgilash</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Izohlar -->
+    <section id="izoh" class="section">
+      <div class="container">
+        <h2>O‘quvchilar fikri</h2>
+        <div class="grid cards">
+          <div class="card">
+            <p>“A+ natijaga 6 oyda erishdim. Eng foydali joyi — xatolar tahlili.”</p><span class="muted">— O‘quvchi
+              M.</span>
+          </div>
+          <div class="card">
+            <p>“SAT Math bo‘yicha 770 oldim. Strukturali reja kuchli.”</p><span class="muted">— O‘quvchi S.</span>
+          </div>
+          <div class="card">
+            <p>“Qiyin masalalar klubida mantiqim juda kuchaydi.”</p><span class="muted">— O‘quvchi D.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="container">
+        <h2>Ko‘p so‘raladigan savollar</h2>
+        <div class="grid faq">
+          <div class="q"><strong>Darslar qayerda o‘tadi?</strong>
+            <p class="muted">Onlayn (Zoom) va oflayn (Toshkent). Manzil yozilish jarayonida beriladi.</p>
+          </div>
+          <div class="q"><strong>Qanday darajadan boshlayman?</strong>
+            <p class="muted">Diagnostik test asosida darajangizga mos guruh tanlanadi.</p>
+          </div>
+          <div class="q"><strong>Uyga vazifalar bormi?</strong>
+            <p class="muted">Ha, haftalik reja va nazorat bor.</p>
+          </div>
+          <div class="q"><strong>To‘lov usullari?</strong>
+            <p class="muted">Naqd, Click, Payme. Yozilishda batafsil ma'lumot beriladi.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bog'lanish -->
+    <section id="boglanish" class="section">
+      <div class="container">
+        <h2>Bog‘lanish</h2>
+        <div class="grid cards">
+          <div class="card">
+            <h3>Tez aloqa</h3>
+            <p class="muted">Telegram: <a href="https://t.me/online_natija" target="_blank"
+                rel="noopener noreferrer">@online_natija</a> | <a href="https://t.me/ilmislomnurdir" target="_blank"
+                rel="noopener noreferrer">@ilmislomnurdir</a></p>
+            <p class="muted">Instagram: <a href="https://instagram.com/teacher_bahodir" target="_blank"
+                rel="noopener noreferrer">@teacher_bahodir</a></p>
+            <p class="muted">Telefon: <a href="tel:+998932993355">+998 (93) 299‑33‑55</a></p>
+            <div class="cta"><a class="btn btn-primary" href="https://t.me/online_natija" target="_blank"
+                rel="noopener noreferrer">Telegram orqali yozilish</a></div>
+          </div>
+          <div class="card">
+            <h3>Qisqa forma</h3>
+            <form action="mailto:bahodir@example.com" method="post" enctype="text/plain">
+              <label for="name">Ism</label>
+              <input id="name" name="Ism" required placeholder="Ismingiz" autocomplete="name"
+                style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:#0C1022;color:var(--text)">
+              <br><br>
+              <label for="phone">Telefon</label>
+              <input id="phone" type="tel" name="Telefon" required placeholder="+998…" autocomplete="tel"
+                style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:#0C1022;color:var(--text)">
+              <br><br>
+              <label for="msg">Xabar</label>
+              <textarea id="msg" name="Xabar" rows="4" placeholder="Qaysi kursga yozilmoqchisiz?"
+                style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:#0C1022;color:var(--text)"></textarea>
+              <br><br>
+              <button class="btn" type="submit">Yuborish</button>
+            </form>
+            <p class="muted" style="margin-top:8px">Eslatma: mailto forma brauzer pochtangizni ochadi. Tez aloqa uchun
+              Telegram tavsiya etiladi.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container"
+      style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between">
+      <div>© <span id="y"></span> Online Natija. Barcha huquqlar himoyalangan.</div>
+      <div style="display:flex;gap:12px"><a href="#kurs">Kurslar</a><a href="#metod">Metodika</a><a
+          href="#narx">Narxlar</a></div>
+    </div>
+    <noscript>
+      <div class="container muted">JavaScript o‘chirilgan. Mobil menyu va yil avtomatik yangilanishi ishlamasligi
+        mumkin.</div>
+    </noscript>
+    <script defer>
+      document.addEventListener('DOMContentLoaded', function () {
+        var yEl = document.getElementById('y'); if (yEl) yEl.textContent = new Date().getFullYear();
+        var btn = document.querySelector('.menu-btn'); var m = document.getElementById('mnav');
+        if (btn && m) {
+          btn.addEventListener('click', function () {
+            var hidden = m.hasAttribute('hidden') || m.style.display === 'none';
+            if (hidden) { m.removeAttribute('hidden'); m.style.display = 'block'; btn.setAttribute('aria-expanded', 'true'); }
+            else { m.setAttribute('hidden', ''); m.style.display = 'none'; btn.setAttribute('aria-expanded', 'false'); }
+          });
+          m.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { m.setAttribute('hidden', ''); m.style.display = 'none'; btn.setAttribute('aria-expanded', 'false'); }); });
+        }
+      });
+    </script>
+  </footer>
+</body>
+
+</html>
